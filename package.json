@@ -7,7 +7,7 @@
     "postinstall": "typings install",
     "pretest": "tsc",
     "mocha": "mocha --compilers js:babel-core/register ./dist/test",
-    "test": "nyc npm run mocha && nyc report --reporter=text-lcov > coverage.lcov && codecov --token="
+    "test": "nyc npm run mocha && nyc report --reporter=text-lcov > coverage.lcov && codecov --token=e8f9617b-0ab3-409e-afca-406d99c879a4"
   },
   "repository": {
     "type": "git",
