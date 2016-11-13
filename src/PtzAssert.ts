@@ -9,8 +9,10 @@ PtzAssert = class PtzAssert {
     }
 
     static equal = equal;
+    static notEqual = notEqual;
 
     static deepEqual = deepEqual;
+    static notDeepEqual = notDeepEqual;
 }
 
 export default PtzAssert;

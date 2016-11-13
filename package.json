@@ -1,6 +1,6 @@
 {
   "name": "ptz-assert",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ptz-assert is a wrapper for npm assert",
   "main": "src/Assert.ts",
   "scripts": {
