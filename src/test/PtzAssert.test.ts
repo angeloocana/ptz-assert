@@ -1,18 +1,18 @@
-import Assert from "../Assert";
+import PtzAssert from "../PtzAssert";
 
 describe("Assert", () => {
     
     describe("ok", () => {
     
        it("true",()=>{
-           Assert.ok(true);
+           PtzAssert.ok(true);
        }) 
 
        it("false",()=>{
            let threw = false;
            
            try{
-               Assert.ok(false);
+               PtzAssert.ok(false);
            }
            catch(ex){
                threw = true;
