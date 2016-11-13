@@ -5,8 +5,7 @@ declare module "ptz-assert" {
         export function equal(actual: any, expected: any, message?: string): void;
         export function notEqual(actual: any, expected: any, message?: string): void;
         export function deepEqual(actual: any, expected: any, message?: string): void;
-        export function notDeepEqual(acutal: any, expected: any, message?: string): void;
-        
+        export function notDeepEqual(acutal: any, expected: any, message?: string): void;        
     }
 
     export = PtzAssert;
