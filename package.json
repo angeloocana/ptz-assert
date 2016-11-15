@@ -1,8 +1,8 @@
 {
   "name": "ptz-assert",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "ptz-assert is a wrapper for npm assert",
-  "main": "dist/Assert.js",
+  "main": "dist/PtzAssert.js",
   "scripts": {
     "postinstall": "typings install",
     "pretest": "gulp js",
