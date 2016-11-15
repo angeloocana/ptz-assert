@@ -1,4 +1,5 @@
 ﻿{
+  "externalTranspiler": "babel",
   "compilerOptions": {
     "noImplicitAny": false,
     "removeComments": true,

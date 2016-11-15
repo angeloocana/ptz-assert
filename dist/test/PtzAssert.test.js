@@ -1,22 +1,25 @@
-import PtzAssert from "../PtzAssert";
-describe("Assert", () => {
-    describe("ok", () => {
-        it("true", () => {
-            PtzAssert.ok(true);
+"use strict";
+
+var _PtzAssert = require("../PtzAssert");
+
+var _PtzAssert2 = _interopRequireDefault(_PtzAssert);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+describe("Assert", function () {
+    describe("ok", function () {
+        it("true", function () {
+            _PtzAssert2.default.ok(true);
         });
-        it("false", () => {
-            let threw = false;
+        it("false", function () {
+            var threw = false;
             try {
-                PtzAssert.ok(false);
-            }
-            catch (ex) {
+                _PtzAssert2.default.ok(false);
+            } catch (ex) {
                 threw = true;
-            }
-            finally {
-                if (!threw)
-                    throw "not threw an exception";
+            } finally {
+                if (!threw) throw "not threw an exception";
             }
         });
     });
 });
-//# sourceMappingURL=PtzAssert.test.js.map

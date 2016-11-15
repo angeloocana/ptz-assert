@@ -1,12 +1,12 @@
 {
   "name": "ptz-assert",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "ptz-assert is a wrapper for npm assert",
-  "main": "src/Assert.ts",
+  "main": "dist/Assert.js",
   "scripts": {
     "postinstall": "typings install",
-    "pretest": "tsc",
-    "mocha": "mocha --compilers js:babel-core/register ./dist/test",
+    "pretest": "gulp js",
+    "mocha": "mocha ./dist/test",
     "test": "nyc npm run mocha && nyc report --reporter=text-lcov > coverage.lcov && codecov --token=e8f9617b-0ab3-409e-afca-406d99c879a4"
   },
   "repository": {
@@ -29,7 +29,11 @@
   "devDependencies": {
     "babel-core": "^6.18.2",
     "babel-preset-es2015": "^6.18.0",
+    "babel-runtime": "^6.18.0",
     "codecov": "^1.0.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-typescript": "^3.1.3",
     "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
     "mocha-lcov-reporter": "^1.2.0",
