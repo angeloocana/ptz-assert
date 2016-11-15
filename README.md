@@ -43,3 +43,19 @@ or clone from github:
 ```bash
     $ npm test
 ``` 
+
+
+## Usage
+
+```js
+
+import { ok, notOk, equal, notEqual, deepEqual, notDeepEqual } from "ptz-assert";
+
+let obj = {test:"ok, i'm a valid obj"};
+
+ok(obj);
+//or test with optional message 
+ok(obj, msg);
+
+```
+
