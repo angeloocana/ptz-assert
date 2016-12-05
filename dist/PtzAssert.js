@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.notDeepEqual = exports.notEqual = exports.deepEqual = exports.equal = exports.notOk = exports.ok = undefined;
+exports.throws = exports.notDeepEqual = exports.notEqual = exports.deepEqual = exports.equal = exports.notOk = exports.ok = undefined;
 
 var _assert = require("assert");
 
@@ -16,3 +16,4 @@ exports.equal = _assert.equal;
 exports.deepEqual = _assert.deepEqual;
 exports.notEqual = _assert.notEqual;
 exports.notDeepEqual = _assert.notDeepEqual;
+exports.throws = _assert.throws;

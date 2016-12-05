@@ -113,4 +113,14 @@ describe("Assert", function () {
             });
         });
     });
+    describe("throw", function () {
+        it("true", function () {
+            (0, _PtzAssert.throws)(function () {
+                throw "Teste";
+            });
+        });
+        it("false", function () {
+            (0, _PtzAssert.throws)(function () {});
+        });
+    });
 });

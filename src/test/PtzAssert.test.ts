@@ -1,4 +1,4 @@
-import { ok, notOk, equal, notEqual, deepEqual, notDeepEqual } from "../PtzAssert";
+import { ok, notOk, equal, notEqual, deepEqual, notDeepEqual, throws } from "../PtzAssert";
 
 let mustThrewException = function (exec) {
     let threw = false;
@@ -132,6 +132,14 @@ describe("Assert", () => {
 
             mustThrewException(() => {
                 notDeepEqual(a, b);
+            });
+        });
+    });
+
+    describe("throw", ()=>{
+        it("true",()=>{
+            throws(function(){
+                throw "Teste";
             });
         });
     });
