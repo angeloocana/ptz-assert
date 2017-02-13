@@ -23,6 +23,7 @@ declare module "ptz-assert" {
         };
 
         export function contains(list:any[], item:any):void;
+        export function notContains(list:any[], item:any):void;
     }
 
     export = PtzAssert;

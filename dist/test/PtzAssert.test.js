@@ -132,4 +132,16 @@ describe("Assert", function () {
             });
         });
     });
+    describe('notContains', function () {
+        it('true', function () {
+            var list = ['a', 'b'];
+            (0, _PtzAssert.notContains)(list, 'c');
+        });
+        it('false', function () {
+            var list = ['a', 'b'];
+            mustThrewException(function () {
+                (0, _PtzAssert.notContains)(list, 'a');
+            });
+        });
+    });
 });

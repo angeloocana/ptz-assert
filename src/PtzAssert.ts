@@ -8,7 +8,11 @@ function contains(list: any[], item:any){
     return ok(list.indexOf(item) >= 0);
 }
 
+function notContains(list: any[], item:any){
+    return notOk(list.indexOf(item) >= 0);
+}
+
 export {
-    ok, notOk, equal, deepEqual, notEqual, notDeepEqual, throws, contains     
+    ok, notOk, equal, deepEqual, notEqual, notDeepEqual, throws, contains, notContains 
 }
 
