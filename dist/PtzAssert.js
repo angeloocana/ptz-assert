@@ -14,6 +14,7 @@ function contains(list, item) {
     return (0, _assert.ok)(list.indexOf(item) >= 0);
 }
 function notContains(list, item) {
+    if (!list) return;
     return notOk(list.indexOf(item) >= 0);
 }
 exports.ok = _assert.ok;

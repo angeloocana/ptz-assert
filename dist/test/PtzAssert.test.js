@@ -136,6 +136,7 @@ describe("Assert", function () {
         it('true', function () {
             var list = ['a', 'b'];
             (0, _PtzAssert.notContains)(list, 'c');
+            (0, _PtzAssert.notContains)(undefined, 'c');
         });
         it('false', function () {
             var list = ['a', 'b'];

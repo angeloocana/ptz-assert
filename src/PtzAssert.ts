@@ -9,6 +9,9 @@ function contains(list: any[], item:any){
 }
 
 function notContains(list: any[], item:any){
+    if(!list)
+        return;
+
     return notOk(list.indexOf(item) >= 0);
 }
 

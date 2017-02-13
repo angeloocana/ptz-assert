@@ -162,6 +162,7 @@ describe("Assert", () => {
         it('true', ()=>{
             var list = ['a', 'b'];
             notContains(list, 'c');
+            notContains(undefined, 'c');
         });
 
         it('false', ()=>{
