@@ -119,8 +119,17 @@ describe("Assert", function () {
                 throw "Teste";
             });
         });
-        it("false", function () {
-            (0, _PtzAssert.throws)(function () {});
+    });
+    describe('contains', function () {
+        it('true', function () {
+            var list = ['a', 'b'];
+            (0, _PtzAssert.contains)(list, 'a');
+        });
+        it('false', function () {
+            var list = ['a', 'b'];
+            mustThrewException(function () {
+                (0, _PtzAssert.contains)(list, 'c');
+            });
         });
     });
 });

@@ -49,7 +49,7 @@ or clone from github:
 
 ```js
 
-import { ok, notOk, equal, notEqual, deepEqual, notDeepEqual } from "ptz-assert";
+import { ok, notOk, equal, notEqual, deepEqual, notDeepEqual, contains } from "ptz-assert";
 
 let obj = {test:"ok, i'm a valid obj"};
 
@@ -57,5 +57,15 @@ ok(obj);
 //or test with optional message 
 ok(obj, msg);
 
+
+var actual = 'ab';
+var expected = 'ab';
+equal(actual, expected);
+
+
+var list = ['a', 'b'];
+contains(list, 'a');
+
 ```
+
 

@@ -1,4 +1,4 @@
-import { ok, notOk, equal, notEqual, deepEqual, notDeepEqual, throws } from "../PtzAssert";
+import { ok, notOk, equal, notEqual, deepEqual, notDeepEqual, throws, contains } from "../PtzAssert";
 
 let mustThrewException = function (exec) {
     let threw = false;
@@ -140,6 +140,20 @@ describe("Assert", () => {
         it("true",()=>{
             throws(function(){
                 throw "Teste";
+            });
+        });
+    });
+
+    describe('contains', () => {
+        it('true', ()=>{
+            var list = ['a', 'b'];
+            contains(list, 'a');
+        });
+
+        it('false', ()=>{
+            var list = ['a', 'b'];
+            mustThrewException(()=>{
+                contains(list, 'c');            
             });
         });
     });

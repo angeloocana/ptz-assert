@@ -21,6 +21,8 @@ declare module "ptz-assert" {
             (block: Function, error: RegExp, message?: string): void;
             (block: Function, error: (err: any) => boolean, message?: string): void;
         };
+
+        export function contains(list:any[], item:any):void;
     }
 
     export = PtzAssert;
