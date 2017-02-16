@@ -1,4 +1,4 @@
-import { ok, notOk, equal, notEqual, deepEqual, notDeepEqual, throws, contains, notContains } from "../PtzAssert";
+import { ok, notOk, equal, notEqual, deepEqual, notDeepEqual, throws, contains, notContains, notEmptyString } from "../PtzAssert";
 
 let mustThrewException = function (exec) {
     let threw = false;
@@ -15,161 +15,182 @@ let mustThrewException = function (exec) {
     }
 }
 
-describe("Assert", () => {
+describe("ok", () => {
 
-    describe("ok", () => {
-
-        it("null", () => {
-            mustThrewException(() => {
-                ok(null);
-            });
-        });
-        it("undefined", () => {
-            mustThrewException(() => {
-                ok(undefined);
-            });
-        });
-        it("false", () => {
-            mustThrewException(() => {
-                ok(false);
-            });
-        });
-        it("true", () => {
-            ok(true);
-        });
-        it("obj", () => {
-            ok({ hi: "hi" });
+    it("null", () => {
+        mustThrewException(() => {
+            ok(null);
         });
     });
-
-    describe("notOk", () => {
-        it("null", () => {
-            notOk(null);
-        });
-        it("undefined", () => {
-            notOk(undefined);
-        });
-        it("false", () => {
-            notOk(false);
-        });
-        it("true", () => {
-            mustThrewException(() => {
-                notOk(true);
-            });
-        });
-        it("obj", () => {
-            mustThrewException(() => {
-                notOk({ hi: "hi" });
-            });
+    it("undefined", () => {
+        mustThrewException(() => {
+            ok(undefined);
         });
     });
+    it("false", () => {
+        mustThrewException(() => {
+            ok(false);
+        });
+    });
+    it("true", () => {
+        ok(true);
+    });
+    it("obj", () => {
+        ok({ hi: "hi" });
+    });
+});
 
-    describe("equal", () => {
-        it("true", () => {
-            let a = { hi: "hi" };
-            let b = a;
+describe("notOk", () => {
+    it("null", () => {
+        notOk(null);
+    });
+    it("undefined", () => {
+        notOk(undefined);
+    });
+    it("false", () => {
+        notOk(false);
+    });
+    it("true", () => {
+        mustThrewException(() => {
+            notOk(true);
+        });
+    });
+    it("obj", () => {
+        mustThrewException(() => {
+            notOk({ hi: "hi" });
+        });
+    });
+});
 
+describe("equal", () => {
+    it("true", () => {
+        let a = { hi: "hi" };
+        let b = a;
+
+        equal(a, b);
+    });
+    it("false", () => {
+        let a = { hi: "hi" };
+        let b = { hello: "hello" };
+
+        mustThrewException(() => {
             equal(a, b);
         });
-        it("false", () => {
-            let a = { hi: "hi" };
-            let b = { hello: "hello" };
-
-            mustThrewException(() => {
-                equal(a, b);
-            });
-        });
     });
+});
 
 
-    describe("notEqual", () => {
-        it("true", () => {
-            let a = { hi: "hi" };
-            let b = a;
+describe("notEqual", () => {
+    it("true", () => {
+        let a = { hi: "hi" };
+        let b = a;
 
-            mustThrewException(() => {
-                notEqual(a, b);
-            });
-        });
-        it("false", () => {
-            let a = { hi: "hi" };
-            let b = { hello: "hello" };
-
+        mustThrewException(() => {
             notEqual(a, b);
         });
     });
+    it("false", () => {
+        let a = { hi: "hi" };
+        let b = { hello: "hello" };
+
+        notEqual(a, b);
+    });
+});
 
 
-    describe("deepEqual", () => {
-        it("true", () => {
-            let a = { hi: "hi" };
-            let b = { hi: "hi" };
+describe("deepEqual", () => {
+    it("true", () => {
+        let a = { hi: "hi" };
+        let b = { hi: "hi" };
 
+        deepEqual(a, b);
+    });
+
+    it("false", () => {
+        let a = { hi: "hi" };
+        let b = { hello: "hello" };
+
+        mustThrewException(() => {
             deepEqual(a, b);
         });
+    });
+});
 
-        it("false", () => {
-            let a = { hi: "hi" };
-            let b = { hello: "hello" };
+describe("notDeepEqual", () => {
+    it("true", () => {
+        let a = { hi: "hi" };
+        let b = { hello: "hello" };
 
-            mustThrewException(() => {
-                deepEqual(a, b);
-            });
-        });
+        notDeepEqual(a, b);
     });
 
-    describe("notDeepEqual", () => {
-        it("true", () => {
-            let a = { hi: "hi" };
-            let b = { hello: "hello" };
+    it("false", () => {
+        let a = { hi: "hi" };
+        let b = { hi: "hi" };
 
+        mustThrewException(() => {
             notDeepEqual(a, b);
         });
+    });
+});
 
-        it("false", () => {
-            let a = { hi: "hi" };
-            let b = { hi: "hi" };
-
-            mustThrewException(() => {
-                notDeepEqual(a, b);
-            });
+describe("throw", ()=>{
+    it("true",()=>{
+        throws(function(){
+            throw "Teste";
         });
     });
+});
 
-    describe("throw", ()=>{
-        it("true",()=>{
-            throws(function(){
-                throw "Teste";
-            });
-        });
+describe('contains', () => {
+    it('true', ()=>{
+        var list = ['a', 'b'];
+        contains(list, 'a');
     });
 
-    describe('contains', () => {
-        it('true', ()=>{
-            var list = ['a', 'b'];
-            contains(list, 'a');
-        });
-
-        it('false', ()=>{
-            var list = ['a', 'b'];
-            mustThrewException(()=>{
-                contains(list, 'c');            
-            });
+    it('false', ()=>{
+        var list = ['a', 'b'];
+        mustThrewException(()=>{
+            contains(list, 'c');            
         });
     });
+});
 
-    describe('notContains', () => {
-        it('true', ()=>{
-            var list = ['a', 'b'];
-            notContains(list, 'c');
-            notContains(undefined, 'c');
-        });
+describe('notContains', () => {
+    it('true', ()=>{
+        var list = ['a', 'b'];
+        notContains(list, 'c');
+        notContains(undefined, 'c');
+    });
 
-        it('false', ()=>{
-            var list = ['a', 'b'];
-            mustThrewException(()=>{
-                notContains(list, 'a');            
-            });
+    it('false', ()=>{
+        var list = ['a', 'b'];
+        mustThrewException(()=>{
+            notContains(list, 'a');            
         });
+    });
+});
+
+describe('notEmptyString', ()=>{
+    it('true',()=>{
+        notEmptyString('Hello world!');
+    });
+
+    it('empty', ()=>{
+        mustThrewException(()=>{
+            notEmptyString('');
+        });    
+    });
+
+    it('null', ()=>{
+        mustThrewException(()=>{
+            notEmptyString(null);
+        });    
+    });
+
+    it('obj', ()=>{
+        mustThrewException(()=>{
+            notEmptyString({});
+        });    
     });
 });

@@ -1,6 +1,6 @@
 {
   "name": "ptz-assert",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "ptz-assert is an assertion library for creating less verbose tests that wrappers npm assert",
   "main": "dist/PtzAssert.js",
   "scripts": {
