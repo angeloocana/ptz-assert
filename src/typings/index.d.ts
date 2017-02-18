@@ -24,6 +24,12 @@ declare module "ptz-assert" {
 
         export function contains(list:any[], item:any):void;
         export function notContains(list:any[], item:any):void;
+
+        export function notEmptyString(text):void;
+        // export function emptyString(text):void; 
+
+        export function notEmptyArray(list: any[]):void;
+        export function emptyArray(list: any[]):void; 
     }
 
     export = PtzAssert;

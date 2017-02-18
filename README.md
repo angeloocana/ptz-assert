@@ -49,7 +49,7 @@ or clone from github:
 
 ```js
 
-import { ok, notOk, equal, notEqual, deepEqual, notDeepEqual, contains } from "ptz-assert";
+import { ok, notOk, equal, notEqual, deepEqual, notDeepEqual, contains, notEmptyString, notEmptyArray, emptyArray } from "ptz-assert";
 
 let obj = {test:"ok, i'm a valid obj"};
 

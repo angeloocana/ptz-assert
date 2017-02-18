@@ -145,7 +145,7 @@ describe('notContains', function () {
     });
 });
 describe('notEmptyString', function () {
-    it('true', function () {
+    it('not empty', function () {
         (0, _PtzAssert.notEmptyString)('Hello world!');
     });
     it('empty', function () {
@@ -162,5 +162,41 @@ describe('notEmptyString', function () {
         mustThrewException(function () {
             (0, _PtzAssert.notEmptyString)({});
         });
+    });
+});
+describe('notEmptyArray', function () {
+    it('not empty', function () {
+        (0, _PtzAssert.notEmptyArray)(['', '']);
+    });
+    it('empty', function () {
+        mustThrewException(function () {
+            (0, _PtzAssert.notEmptyArray)([]);
+        });
+    });
+    it('null', function () {
+        mustThrewException(function () {
+            (0, _PtzAssert.notEmptyArray)(null);
+        });
+    });
+    it('undefined', function () {
+        mustThrewException(function () {
+            (0, _PtzAssert.notEmptyArray)(undefined);
+        });
+    });
+});
+describe('emptyArray', function () {
+    it('empty', function () {
+        (0, _PtzAssert.emptyArray)([]);
+    });
+    it('not empty', function () {
+        mustThrewException(function () {
+            (0, _PtzAssert.emptyArray)(['', '']);
+        });
+    });
+    it('null', function () {
+        (0, _PtzAssert.emptyArray)(null);
+    });
+    it('undefined', function () {
+        (0, _PtzAssert.emptyArray)(undefined);
     });
 });

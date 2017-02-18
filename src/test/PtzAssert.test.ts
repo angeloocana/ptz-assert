@@ -1,4 +1,17 @@
-import { ok, notOk, equal, notEqual, deepEqual, notDeepEqual, throws, contains, notContains, notEmptyString } from "../PtzAssert";
+import {
+    ok,
+    notOk,
+    equal,
+    notEqual,
+    deepEqual,
+    notDeepEqual,
+    throws,
+    contains,
+    notContains,
+    notEmptyString,
+    notEmptyArray,
+    emptyArray
+} from "../PtzAssert";
 
 let mustThrewException = function (exec) {
     let threw = false;
@@ -134,63 +147,107 @@ describe("notDeepEqual", () => {
     });
 });
 
-describe("throw", ()=>{
-    it("true",()=>{
-        throws(function(){
+describe("throw", () => {
+    it("true", () => {
+        throws(function () {
             throw "Teste";
         });
     });
 });
 
 describe('contains', () => {
-    it('true', ()=>{
+    it('true', () => {
         var list = ['a', 'b'];
         contains(list, 'a');
     });
 
-    it('false', ()=>{
+    it('false', () => {
         var list = ['a', 'b'];
-        mustThrewException(()=>{
-            contains(list, 'c');            
+        mustThrewException(() => {
+            contains(list, 'c');
         });
     });
 });
 
 describe('notContains', () => {
-    it('true', ()=>{
+    it('true', () => {
         var list = ['a', 'b'];
         notContains(list, 'c');
         notContains(undefined, 'c');
     });
 
-    it('false', ()=>{
+    it('false', () => {
         var list = ['a', 'b'];
-        mustThrewException(()=>{
-            notContains(list, 'a');            
+        mustThrewException(() => {
+            notContains(list, 'a');
         });
     });
 });
 
-describe('notEmptyString', ()=>{
-    it('true',()=>{
+describe('notEmptyString', () => {
+    it('not empty', () => {
         notEmptyString('Hello world!');
     });
 
-    it('empty', ()=>{
-        mustThrewException(()=>{
+    it('empty', () => {
+        mustThrewException(() => {
             notEmptyString('');
-        });    
+        });
     });
 
-    it('null', ()=>{
-        mustThrewException(()=>{
+    it('null', () => {
+        mustThrewException(() => {
             notEmptyString(null);
-        });    
+        });
     });
 
-    it('obj', ()=>{
-        mustThrewException(()=>{
+    it('obj', () => {
+        mustThrewException(() => {
             notEmptyString({});
-        });    
+        });
     });
 });
+
+describe('notEmptyArray', () => {    
+    it('not empty', () => {
+        notEmptyArray(['', '']);
+    });
+
+    it('empty', () => {
+        mustThrewException(() => {
+            notEmptyArray([]);
+        });
+    });
+
+    it('null', () => {
+        mustThrewException(() => {
+            notEmptyArray(null);
+        });
+    });
+
+    it('undefined', () => {
+        mustThrewException(() => {
+            notEmptyArray(undefined);
+        });
+    });
+});
+
+describe('emptyArray', () => {
+    it('empty', () => {
+        emptyArray([]);
+    });
+
+    it('not empty', () => {
+        mustThrewException(() => {
+            emptyArray(['', '']);
+        });
+    });
+
+    it('null', () => {
+        emptyArray(null);
+    });
+
+    it('undefined', () => {
+        emptyArray(undefined);
+    });
+})
