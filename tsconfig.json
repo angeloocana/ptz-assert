@@ -1,6 +1,8 @@
 ﻿{
   "externalTranspiler": "babel",
   "compilerOptions": {
+    "module": "es6",
+    "moduleResolution": "node",
     "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": true,
