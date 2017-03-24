@@ -4,15 +4,19 @@ function notOk(value: any, message?: string) {
     return ok(!value, message);
 }
 
-function contains(list: any[], item: any) {
-    return ok(list.indexOf(item) >= 0);
+function contains(list: any[], item: any, errorMsg?: string) {
+    return ok(list.indexOf(item) >= 0, errorMsg);
 }
 
-function notContains(list: any[], item: any) {
+function containsNTimes(list: any[], item: any, nTimes: number, errorMsg?: string) {
+    return equal(list.filter(x => x == item).length, nTimes, errorMsg);
+}
+
+function notContains(list: any[], item: any, errorMsg?: string) {
     if (!list)
         return;
 
-    return notOk(list.indexOf(item) >= 0);
+    return notOk(list.indexOf(item) >= 0, errorMsg);
 }
 
 function notEmptyString(text) {
@@ -35,7 +39,7 @@ function notEmptyArray(list: any[]) {
 }
 
 function emptyArray(list: any[]) {
-    if (list && list.length > 0 )
+    if (list && list.length > 0)
         throw 'ERROR_ARRAY_MUST_BE_EMPTY';
 }
 
@@ -48,6 +52,7 @@ export {
     notDeepEqual,
     throws,
     contains,
+    containsNTimes,
     notContains,
     notEmptyString,
     notEmptyArray,

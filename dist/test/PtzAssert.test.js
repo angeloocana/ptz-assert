@@ -131,6 +131,21 @@ describe('contains', function () {
         });
     });
 });
+describe('containsNTimes', function () {
+    var list = ['a', 'b', 'b', 'c', 'c', 'c'];
+    it('0', function () {
+        (0, _PtzAssert.containsNTimes)(list, 'd', 0);
+    });
+    it('1', function () {
+        (0, _PtzAssert.containsNTimes)(list, 'a', 1);
+    });
+    it('2', function () {
+        (0, _PtzAssert.containsNTimes)(list, 'b', 2);
+    });
+    it('3', function () {
+        (0, _PtzAssert.containsNTimes)(list, 'c', 3);
+    });
+});
 describe('notContains', function () {
     it('true', function () {
         var list = ['a', 'b'];

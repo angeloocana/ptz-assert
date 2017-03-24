@@ -7,6 +7,7 @@ import {
     notDeepEqual,
     throws,
     contains,
+    containsNTimes,
     notContains,
     notEmptyString,
     notEmptyArray,
@@ -169,6 +170,26 @@ describe('contains', () => {
     });
 });
 
+describe('containsNTimes', () => {
+    const list = ['a', 'b', 'b', 'c', 'c', 'c'];
+
+    it('0', () => {
+        containsNTimes(list, 'd', 0);
+    });
+
+    it('1', () => {
+        containsNTimes(list, 'a', 1);
+    });
+
+    it('2', () => {
+        containsNTimes(list, 'b', 2);
+    });
+
+    it('3', () => {
+        containsNTimes(list, 'c', 3);
+    });
+});
+
 describe('notContains', () => {
     it('true', () => {
         var list = ['a', 'b'];
@@ -208,7 +229,7 @@ describe('notEmptyString', () => {
     });
 });
 
-describe('notEmptyArray', () => {    
+describe('notEmptyArray', () => {
     it('not empty', () => {
         notEmptyArray(['', '']);
     });
