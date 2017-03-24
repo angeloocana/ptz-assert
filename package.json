@@ -1,9 +1,9 @@
 {
   "name": "ptz-assert",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "ptz-assert is an assertion library for creating less verbose tests that wrappers npm assert",
-  "main": "dist/PtzAssert.js",
-  "typings": "src/PtzAssert.ts",
+  "main": "dist/index.js",
+  "typings": "src/index.ts",
   "scripts": {
     "lint": "tslint ./src/*.ts ./src/**/*.ts ./src/**/*.test.ts ./src/**/*.d.ts",
     "js": "gulp js",
