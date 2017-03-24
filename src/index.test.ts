@@ -1,91 +1,89 @@
 import {
-    ok,
-    notOk,
-    equal,
-    notEqual,
-    deepEqual,
-    notDeepEqual,
-    throws,
     contains,
     containsNTimes,
+    deepEqual,
+    emptyArray,
+    equal,
     notContains,
-    notEmptyString,
+    notDeepEqual,
     notEmptyArray,
-    emptyArray
-} from "../PtzAssert";
+    notEmptyString,
+    notEqual,
+    notOk,
+    ok,
+    throws
+} from './index';
 
-let mustThrewException = function (exec) {
+let mustThrewException = exec => {
     let threw = false;
 
     try {
         exec();
-    }
-    catch (ex) {
+    } catch (ex) {
         threw = true;
-    }
-    finally {
+    } finally {
         if (!threw)
-            throw "not threw an exception"
+            throw 'not threw an exception'; // tslint:disable-line:no-unsafe-finally
     }
-}
+};
 
-describe("ok", () => {
+describe('ok', () => {
 
-    it("null", () => {
+    it('null', () => {
         mustThrewException(() => {
             ok(null);
         });
     });
-    it("undefined", () => {
+    it('undefined', () => {
         mustThrewException(() => {
             ok(undefined);
         });
     });
-    it("false", () => {
+    it('false', () => {
         mustThrewException(() => {
             ok(false);
         });
     });
-    it("true", () => {
+    it('true', () => {
         ok(true);
     });
-    it("obj", () => {
-        ok({ hi: "hi" });
+    it('obj', () => {
+        ok({ hi: 'hi' });
     });
 });
 
-describe("notOk", () => {
-    it("null", () => {
+describe('notOk', () => {
+    it('null', () => {
         notOk(null);
     });
-    it("undefined", () => {
+    it('undefined', () => {
         notOk(undefined);
     });
-    it("false", () => {
+    it('false', () => {
         notOk(false);
     });
-    it("true", () => {
+    it('true', () => {
         mustThrewException(() => {
             notOk(true);
         });
     });
-    it("obj", () => {
+    it('obj', () => {
         mustThrewException(() => {
-            notOk({ hi: "hi" });
+            notOk({ hi: 'hi' });
         });
     });
 });
 
-describe("equal", () => {
-    it("true", () => {
-        let a = { hi: "hi" };
+describe('equal', () => {
+    it('true', () => {
+        let a = { hi: 'hi' };
         let b = a;
 
         equal(a, b);
     });
-    it("false", () => {
-        let a = { hi: "hi" };
-        let b = { hello: "hello" };
+    it('false', () => {
+        let a = { hi: 'hi' };
+        let b = { hello: 'hello' };
 
         mustThrewException(() => {
             equal(a, b);
@@ -93,36 +91,34 @@ describe("equal", () => {
     });
 });
 
-
-describe("notEqual", () => {
-    it("true", () => {
-        let a = { hi: "hi" };
+describe('notEqual', () => {
+    it('true', () => {
+        let a = { hi: 'hi' };
         let b = a;
 
         mustThrewException(() => {
             notEqual(a, b);
         });
     });
-    it("false", () => {
-        let a = { hi: "hi" };
-        let b = { hello: "hello" };
+    it('false', () => {
+        let a = { hi: 'hi' };
+        let b = { hello: 'hello' };
 
         notEqual(a, b);
     });
 });
 
-
-describe("deepEqual", () => {
-    it("true", () => {
-        let a = { hi: "hi" };
-        let b = { hi: "hi" };
+describe('deepEqual', () => {
+    it('true', () => {
+        let a = { hi: 'hi' };
+        let b = { hi: 'hi' };
 
         deepEqual(a, b);
     });
 
-    it("false", () => {
-        let a = { hi: "hi" };
-        let b = { hello: "hello" };
+    it('false', () => {
+        let a = { hi: 'hi' };
+        let b = { hello: 'hello' };
 
         mustThrewException(() => {
             deepEqual(a, b);
@@ -130,17 +126,17 @@ describe("deepEqual", () => {
     });
 });
 
-describe("notDeepEqual", () => {
-    it("true", () => {
-        let a = { hi: "hi" };
-        let b = { hello: "hello" };
+describe('notDeepEqual', () => {
+    it('true', () => {
+        let a = { hi: 'hi' };
+        let b = { hello: 'hello' };
 
         notDeepEqual(a, b);
     });
 
-    it("false", () => {
-        let a = { hi: "hi" };
-        let b = { hi: "hi" };
+    it('false', () => {
+        let a = { hi: 'hi' };
+        let b = { hi: 'hi' };
 
         mustThrewException(() => {
             notDeepEqual(a, b);
@@ -148,10 +144,10 @@ describe("notDeepEqual", () => {
     });
 });
 
-describe("throw", () => {
-    it("true", () => {
-        throws(function () {
-            throw "Teste";
+describe('throw', () => {
+    it('true', () => {
+        throws(() => {
+            throw 'Teste';
         });
     });
 });
@@ -271,4 +267,4 @@ describe('emptyArray', () => {
     it('undefined', () => {
         emptyArray(undefined);
     });
-})
+});

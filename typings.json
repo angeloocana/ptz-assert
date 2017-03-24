@@ -1,9 +1,8 @@
 {
-  "globalDependencies": {
-    "assert": "registry:dt/assert#0.0.0+20160317120654",
-    "mocha": "registry:dt/mocha#2.2.5+20161028141524"
+  "dependencies": {
+    "sinon": "registry:npm/sinon#1.16.0+20160723033700"
   },
-  "globalDevDependencies": {
-    "node": "registry:dt/node#6.0.0+20161102143327"
+  "globalDependencies": {
+    "mocha": "registry:dt/mocha#2.2.5+20170204022515"
   }
 }

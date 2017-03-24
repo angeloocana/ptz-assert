@@ -5,9 +5,11 @@
   "main": "dist/PtzAssert.js",
   "typings": "src/PtzAssert.ts",
   "scripts": {
+    "lint": "tslint ./src/*.ts ./src/**/*.ts ./src/**/*.test.ts ./src/**/*.d.ts",
+    "js": "gulp js",
+    "pretest": "npm-run-all --parallel js lint",
+    "mocha": "mocha ./dist/**/*.js --compilers js:babel-core/register --require babel-polyfill",
     "postinstall": "typings install",
-    "pretest": "gulp js",
-    "mocha": "mocha ./dist/test",
     "test": "nyc npm run mocha && nyc report --reporter=text-lcov > coverage.lcov && codecov --token=e8f9617b-0ab3-409e-afca-406d99c879a4"
   },
   "repository": {
@@ -28,19 +30,24 @@
   },
   "homepage": "https://github.com/angeloocana/ptz-assert#readme",
   "devDependencies": {
-    "babel-core": "^6.18.2",
-    "babel-preset-es2015": "^6.18.0",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
     "babel-runtime": "^6.18.0",
     "codecov": "^1.0.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
-    "gulp-typescript": "^3.1.3",
+    "gulp-typescript": "^3.1.6",
     "istanbul": "^0.4.5",
-    "mocha": "^3.1.2",
-    "mocha-lcov-reporter": "^1.2.0",
+    "mocha": "^3.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "npm-run-all": "^4.0.2",
     "nyc": "^8.4.0",
-    "typescript": "^2.0.8",
-    "typings": "^2.0.0"
+    "sinon": "^2.1.0",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1",
+    "typings": "^2.1.0"
   },
   "dependencies": {
     "assert": "^1.4.1"

@@ -1,0 +1,9 @@
+{
+  "generator-ptz": {
+    "promptValues": {
+      "appname": "ptz-assert",
+      "githubAuthor": "polutz",
+      "runNpmInstall": true
+    }
+  }
+}

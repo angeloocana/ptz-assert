@@ -1,5 +1,4 @@
-﻿{
-  "externalTranspiler": "babel",
+{
   "compilerOptions": {
     "module": "es6",
     "moduleResolution": "node",
@@ -9,11 +8,14 @@
     "target": "ES6",
     "sourceMap": true,
     "listFiles": false,
-    "outDir": "dist/"
+    "outDir": "dist/",
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "typings/**/*.d.ts",
-    "src/**/*.ts"
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.test.ts"
   ],
   "exclude": [
     "node_modules"

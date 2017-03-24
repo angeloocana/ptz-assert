@@ -15,7 +15,7 @@ function contains(list, item, errorMsg) {
 }
 function containsNTimes(list, item, nTimes, errorMsg) {
     return (0, _assert.equal)(list.filter(function (x) {
-        return x == item;
+        return x === item;
     }).length, nTimes, errorMsg);
 }
 function notContains(list, item, errorMsg) {
@@ -24,7 +24,7 @@ function notContains(list, item, errorMsg) {
 }
 function notEmptyString(text) {
     if (!text) throw 'ERROR_NULL_REQUIRED_STRING';
-    if (typeof text != 'string') throw 'ERROR_NOT_A_STRING';
+    if (typeof text !== 'string') throw 'ERROR_NOT_A_STRING';
     if (!(text.length > 0)) throw 'ERROR_NULL_REQUIRED_STRING';
 }
 function notEmptyArray(list) {

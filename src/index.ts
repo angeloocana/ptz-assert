@@ -1,4 +1,4 @@
-import { ok, equal, deepEqual, notEqual, notDeepEqual, throws } from "assert";
+import { deepEqual, equal, notDeepEqual, notEqual, ok, throws } from 'assert';
 
 function notOk(value: any, message?: string) {
     return ok(!value, message);
@@ -9,7 +9,7 @@ function contains(list: any[], item: any, errorMsg?: string) {
 }
 
 function containsNTimes(list: any[], item: any, nTimes: number, errorMsg?: string) {
-    return equal(list.filter(x => x == item).length, nTimes, errorMsg);
+    return equal(list.filter(x => x === item).length, nTimes, errorMsg);
 }
 
 function notContains(list: any[], item: any, errorMsg?: string) {
@@ -23,7 +23,7 @@ function notEmptyString(text) {
     if (!text)
         throw 'ERROR_NULL_REQUIRED_STRING';
 
-    if (typeof text != 'string')
+    if (typeof text !== 'string')
         throw 'ERROR_NOT_A_STRING';
 
     if (!(text.length > 0))
