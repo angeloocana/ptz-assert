@@ -1,5 +1,5 @@
 # ptz-assert
-================
+
 [![Build Status](https://travis-ci.org/angeloocana/ptz-assert.svg)](https://travis-ci.org/angeloocana/ptz-assert)
 [![NPM](https://img.shields.io/npm/v/ptz-assert.svg)](https://www.npmjs.com/package/ptz-assert)
 [![codecov.io](http://codecov.io/github/angeloocana/ptz-assert/coverage.svg)](http://codecov.io/github/angeloocana/ptz-assert)
