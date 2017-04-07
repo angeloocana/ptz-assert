@@ -1,6 +1,11 @@
 ## master
 
 
+## ... (, 2017)
+
+* Remove babel-node, babel-polyfill, babel-core and ptz-babel-register.
+* Remove babel settings from package.json.
+
 ## 1.6.4 (April 7, 2016)
 
 * Remove typings and gulp.

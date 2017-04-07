@@ -3,7 +3,7 @@
     "promptValues": {
       "appname": "ptz-assert",
       "githubAuthor": "polutz",
-      "runNpmInstall": false
+      "runNpmInstall": true
     }
   }
 }
