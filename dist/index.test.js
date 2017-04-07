@@ -1,217 +1,218 @@
-'use strict';
-
-var _index = require('./index');
-
-var mustThrewException = function mustThrewException(exec) {
-    var threw = false;
+import { contains, containsNTimes, deepEqual, emptyArray, equal, notContains, notDeepEqual, notEmptyArray, notEmptyString, notEqual, notOk, ok, throws } from './index';
+let mustThrewException = exec => {
+    let threw = false;
     try {
         exec();
-    } catch (ex) {
+    }
+    catch (ex) {
         threw = true;
-    } finally {
-        if (!threw) throw 'not threw an exception';
+    }
+    finally {
+        if (!threw)
+            throw 'not threw an exception';
     }
 };
-describe('ok', function () {
-    it('null', function () {
-        mustThrewException(function () {
-            (0, _index.ok)(null);
+describe('ok', () => {
+    it('null', () => {
+        mustThrewException(() => {
+            ok(null);
         });
     });
-    it('undefined', function () {
-        mustThrewException(function () {
-            (0, _index.ok)(undefined);
+    it('undefined', () => {
+        mustThrewException(() => {
+            ok(undefined);
         });
     });
-    it('false', function () {
-        mustThrewException(function () {
-            (0, _index.ok)(false);
+    it('false', () => {
+        mustThrewException(() => {
+            ok(false);
         });
     });
-    it('true', function () {
-        (0, _index.ok)(true);
+    it('true', () => {
+        ok(true);
     });
-    it('obj', function () {
-        (0, _index.ok)({ hi: 'hi' });
+    it('obj', () => {
+        ok({ hi: 'hi' });
     });
 });
-describe('notOk', function () {
-    it('null', function () {
-        (0, _index.notOk)(null);
+describe('notOk', () => {
+    it('null', () => {
+        notOk(null);
     });
-    it('undefined', function () {
-        (0, _index.notOk)(undefined);
+    it('undefined', () => {
+        notOk(undefined);
     });
-    it('false', function () {
-        (0, _index.notOk)(false);
+    it('false', () => {
+        notOk(false);
     });
-    it('true', function () {
-        mustThrewException(function () {
-            (0, _index.notOk)(true);
+    it('true', () => {
+        mustThrewException(() => {
+            notOk(true);
         });
     });
-    it('obj', function () {
-        mustThrewException(function () {
-            (0, _index.notOk)({ hi: 'hi' });
-        });
-    });
-});
-describe('equal', function () {
-    it('true', function () {
-        var a = { hi: 'hi' };
-        var b = a;
-        (0, _index.equal)(a, b);
-    });
-    it('false', function () {
-        var a = { hi: 'hi' };
-        var b = { hello: 'hello' };
-        mustThrewException(function () {
-            (0, _index.equal)(a, b);
+    it('obj', () => {
+        mustThrewException(() => {
+            notOk({ hi: 'hi' });
         });
     });
 });
-describe('notEqual', function () {
-    it('true', function () {
-        var a = { hi: 'hi' };
-        var b = a;
-        mustThrewException(function () {
-            (0, _index.notEqual)(a, b);
-        });
+describe('equal', () => {
+    it('true', () => {
+        let a = { hi: 'hi' };
+        let b = a;
+        equal(a, b);
     });
-    it('false', function () {
-        var a = { hi: 'hi' };
-        var b = { hello: 'hello' };
-        (0, _index.notEqual)(a, b);
-    });
-});
-describe('deepEqual', function () {
-    it('true', function () {
-        var a = { hi: 'hi' };
-        var b = { hi: 'hi' };
-        (0, _index.deepEqual)(a, b);
-    });
-    it('false', function () {
-        var a = { hi: 'hi' };
-        var b = { hello: 'hello' };
-        mustThrewException(function () {
-            (0, _index.deepEqual)(a, b);
+    it('false', () => {
+        let a = { hi: 'hi' };
+        let b = { hello: 'hello' };
+        mustThrewException(() => {
+            equal(a, b);
         });
     });
 });
-describe('notDeepEqual', function () {
-    it('true', function () {
-        var a = { hi: 'hi' };
-        var b = { hello: 'hello' };
-        (0, _index.notDeepEqual)(a, b);
+describe('notEqual', () => {
+    it('true', () => {
+        let a = { hi: 'hi' };
+        let b = a;
+        mustThrewException(() => {
+            notEqual(a, b);
+        });
     });
-    it('false', function () {
-        var a = { hi: 'hi' };
-        var b = { hi: 'hi' };
-        mustThrewException(function () {
-            (0, _index.notDeepEqual)(a, b);
+    it('false', () => {
+        let a = { hi: 'hi' };
+        let b = { hello: 'hello' };
+        notEqual(a, b);
+    });
+});
+describe('deepEqual', () => {
+    it('true', () => {
+        let a = { hi: 'hi' };
+        let b = { hi: 'hi' };
+        deepEqual(a, b);
+    });
+    it('false', () => {
+        let a = { hi: 'hi' };
+        let b = { hello: 'hello' };
+        mustThrewException(() => {
+            deepEqual(a, b);
         });
     });
 });
-describe('throw', function () {
-    it('true', function () {
-        (0, _index.throws)(function () {
+describe('notDeepEqual', () => {
+    it('true', () => {
+        let a = { hi: 'hi' };
+        let b = { hello: 'hello' };
+        notDeepEqual(a, b);
+    });
+    it('false', () => {
+        let a = { hi: 'hi' };
+        let b = { hi: 'hi' };
+        mustThrewException(() => {
+            notDeepEqual(a, b);
+        });
+    });
+});
+describe('throw', () => {
+    it('true', () => {
+        throws(() => {
             throw 'Teste';
         });
     });
 });
-describe('contains', function () {
-    it('true', function () {
+describe('contains', () => {
+    it('true', () => {
         var list = ['a', 'b'];
-        (0, _index.contains)(list, 'a');
+        contains(list, 'a');
     });
-    it('false', function () {
+    it('false', () => {
         var list = ['a', 'b'];
-        mustThrewException(function () {
-            (0, _index.contains)(list, 'c');
+        mustThrewException(() => {
+            contains(list, 'c');
         });
     });
 });
-describe('containsNTimes', function () {
-    var list = ['a', 'b', 'b', 'c', 'c', 'c'];
-    it('0', function () {
-        (0, _index.containsNTimes)(list, 'd', 0);
+describe('containsNTimes', () => {
+    const list = ['a', 'b', 'b', 'c', 'c', 'c'];
+    it('0', () => {
+        containsNTimes(list, 'd', 0);
     });
-    it('1', function () {
-        (0, _index.containsNTimes)(list, 'a', 1);
+    it('1', () => {
+        containsNTimes(list, 'a', 1);
     });
-    it('2', function () {
-        (0, _index.containsNTimes)(list, 'b', 2);
+    it('2', () => {
+        containsNTimes(list, 'b', 2);
     });
-    it('3', function () {
-        (0, _index.containsNTimes)(list, 'c', 3);
+    it('3', () => {
+        containsNTimes(list, 'c', 3);
     });
 });
-describe('notContains', function () {
-    it('true', function () {
+describe('notContains', () => {
+    it('true', () => {
         var list = ['a', 'b'];
-        (0, _index.notContains)(list, 'c');
-        (0, _index.notContains)(undefined, 'c');
+        notContains(list, 'c');
+        notContains(undefined, 'c');
     });
-    it('false', function () {
+    it('false', () => {
         var list = ['a', 'b'];
-        mustThrewException(function () {
-            (0, _index.notContains)(list, 'a');
+        mustThrewException(() => {
+            notContains(list, 'a');
         });
     });
 });
-describe('notEmptyString', function () {
-    it('not empty', function () {
-        (0, _index.notEmptyString)('Hello world!');
+describe('notEmptyString', () => {
+    it('not empty', () => {
+        notEmptyString('Hello world!');
     });
-    it('empty', function () {
-        mustThrewException(function () {
-            (0, _index.notEmptyString)('');
+    it('empty', () => {
+        mustThrewException(() => {
+            notEmptyString('');
         });
     });
-    it('null', function () {
-        mustThrewException(function () {
-            (0, _index.notEmptyString)(null);
+    it('null', () => {
+        mustThrewException(() => {
+            notEmptyString(null);
         });
     });
-    it('obj', function () {
-        mustThrewException(function () {
-            (0, _index.notEmptyString)({});
-        });
-    });
-});
-describe('notEmptyArray', function () {
-    it('not empty', function () {
-        (0, _index.notEmptyArray)(['', '']);
-    });
-    it('empty', function () {
-        mustThrewException(function () {
-            (0, _index.notEmptyArray)([]);
-        });
-    });
-    it('null', function () {
-        mustThrewException(function () {
-            (0, _index.notEmptyArray)(null);
-        });
-    });
-    it('undefined', function () {
-        mustThrewException(function () {
-            (0, _index.notEmptyArray)(undefined);
+    it('obj', () => {
+        mustThrewException(() => {
+            notEmptyString({});
         });
     });
 });
-describe('emptyArray', function () {
-    it('empty', function () {
-        (0, _index.emptyArray)([]);
+describe('notEmptyArray', () => {
+    it('not empty', () => {
+        notEmptyArray(['', '']);
     });
-    it('not empty', function () {
-        mustThrewException(function () {
-            (0, _index.emptyArray)(['', '']);
+    it('empty', () => {
+        mustThrewException(() => {
+            notEmptyArray([]);
         });
     });
-    it('null', function () {
-        (0, _index.emptyArray)(null);
+    it('null', () => {
+        mustThrewException(() => {
+            notEmptyArray(null);
+        });
     });
-    it('undefined', function () {
-        (0, _index.emptyArray)(undefined);
+    it('undefined', () => {
+        mustThrewException(() => {
+            notEmptyArray(undefined);
+        });
     });
 });
+describe('emptyArray', () => {
+    it('empty', () => {
+        emptyArray([]);
+    });
+    it('not empty', () => {
+        mustThrewException(() => {
+            emptyArray(['', '']);
+        });
+    });
+    it('null', () => {
+        emptyArray(null);
+    });
+    it('undefined', () => {
+        emptyArray(undefined);
+    });
+});
+//# sourceMappingURL=index.test.js.map
