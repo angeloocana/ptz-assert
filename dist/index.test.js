@@ -2,12 +2,13 @@
 
 var _index = require('./index');
 
-var mustThrewException = function mustThrewException(exec) {
+var mustThrewException = function mustThrewException(exec, errorMsg) {
     var threw = false;
     try {
         exec();
     } catch (ex) {
         threw = true;
+        if (errorMsg && ex !== errorMsg) throw 'not threw custom error msg: ' + errorMsg;
     } finally {
         if (!threw) throw 'not threw an exception';
     }
@@ -188,15 +189,33 @@ describe('notEmptyArray', function () {
             (0, _index.notEmptyArray)([]);
         });
     });
+    it('empty and custom error msg', function () {
+        var errorMsg = 'error msg';
+        mustThrewException(function () {
+            (0, _index.notEmptyArray)([], errorMsg);
+        }, errorMsg);
+    });
     it('null', function () {
         mustThrewException(function () {
             (0, _index.notEmptyArray)(null);
         });
     });
+    it('null and custom error msg', function () {
+        var errorMsg = 'error msg';
+        mustThrewException(function () {
+            (0, _index.notEmptyArray)(null, errorMsg);
+        }, errorMsg);
+    });
     it('undefined', function () {
         mustThrewException(function () {
             (0, _index.notEmptyArray)(undefined);
         });
+    });
+    it('undefined and custom error msg', function () {
+        var errorMsg = 'error msg';
+        mustThrewException(function () {
+            (0, _index.notEmptyArray)(undefined, errorMsg);
+        }, errorMsg);
     });
 });
 describe('emptyArray', function () {

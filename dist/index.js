@@ -7,8 +7,8 @@ exports.emptyArray = exports.notEmptyArray = exports.notEmptyString = exports.no
 
 var _assert = require('assert');
 
-function notOk(value, message) {
-    return (0, _assert.ok)(!value, message);
+function notOk(value, errorMsg) {
+    return (0, _assert.ok)(!value, errorMsg);
 }
 function contains(list, item, errorMsg) {
     return (0, _assert.ok)(list.indexOf(item) >= 0, errorMsg);
@@ -22,17 +22,17 @@ function notContains(list, item, errorMsg) {
     if (!list) return;
     return notOk(list.indexOf(item) >= 0, errorMsg);
 }
-function notEmptyString(text) {
-    if (!text) throw 'ERROR_NULL_REQUIRED_STRING';
-    if (typeof text !== 'string') throw 'ERROR_NOT_A_STRING';
-    if (!(text.length > 0)) throw 'ERROR_NULL_REQUIRED_STRING';
+function notEmptyString(text, errorMsg) {
+    if (!text) throw errorMsg ? errorMsg : 'ERROR_NULL_REQUIRED_STRING';
+    if (typeof text !== 'string') throw errorMsg ? errorMsg : 'ERROR_NOT_A_STRING';
+    if (!(text.length > 0)) throw errorMsg ? errorMsg : 'ERROR_NULL_REQUIRED_STRING';
 }
-function notEmptyArray(list) {
-    if (!list) throw 'ERROR_NULL_REQUIRED_ARRAY';
-    if (list.length < 1) throw 'ERROR_EMPTY_REQUIRED_ARRAY';
+function notEmptyArray(list, errorMsg) {
+    if (!list) throw errorMsg ? errorMsg : 'ERROR_NULL_REQUIRED_ARRAY';
+    if (list.length < 1) throw errorMsg ? errorMsg : 'ERROR_EMPTY_REQUIRED_ARRAY';
 }
-function emptyArray(list) {
-    if (list && list.length > 0) throw 'ERROR_ARRAY_MUST_BE_EMPTY';
+function emptyArray(list, errorMsg) {
+    if (list && list.length > 0) throw errorMsg ? errorMsg : 'ERROR_ARRAY_MUST_BE_EMPTY';
 }
 exports.ok = _assert.ok;
 exports.notOk = notOk;

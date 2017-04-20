@@ -14,13 +14,15 @@ import {
     throws
 } from './index';
 
-let mustThrewException = exec => {
+let mustThrewException = (exec, errorMsg?: string) => {
     let threw = false;
 
     try {
         exec();
     } catch (ex) {
         threw = true;
+        if (errorMsg && ex !== errorMsg)
+            throw 'not threw custom error msg: ' + errorMsg;
     } finally {
         if (!threw)
             throw 'not threw an exception'; // tslint:disable-line:no-unsafe-finally
@@ -236,16 +238,37 @@ describe('notEmptyArray', () => {
         });
     });
 
+    it('empty and custom error msg', () => {
+        const errorMsg = 'error msg';
+        mustThrewException(() => {
+            notEmptyArray([], errorMsg);
+        }, errorMsg);
+    });
+
     it('null', () => {
         mustThrewException(() => {
             notEmptyArray(null);
         });
     });
 
+    it('null and custom error msg', () => {
+        const errorMsg = 'error msg';
+        mustThrewException(() => {
+            notEmptyArray(null, errorMsg);
+        }, errorMsg);
+    });
+
     it('undefined', () => {
         mustThrewException(() => {
             notEmptyArray(undefined);
         });
+    });
+
+    it('undefined and custom error msg', () => {
+        const errorMsg = 'error msg';
+        mustThrewException(() => {
+            notEmptyArray(undefined, errorMsg);
+        }, errorMsg);
     });
 });
 
