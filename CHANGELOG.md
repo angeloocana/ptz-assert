@@ -1,6 +1,13 @@
 ## master
 
 
+## 1.6.6 (April 19, 2017)
+
+* Add custom error message to.
+    - notEmptyString,
+    - notEmptyArray,
+    - emptyArray
+
 ## 1.6.5 (April 7, 2017)
 
 * Remove babel-node, babel-polyfill, babel-core and ptz-babel-register.
