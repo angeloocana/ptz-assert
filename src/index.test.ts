@@ -1,5 +1,6 @@
 import {
     contains,
+    containsFind,
     containsNTimes,
     deepEqual,
     emptyArray,
@@ -164,6 +165,20 @@ describe('contains', () => {
         var list = ['a', 'b'];
         mustThrewException(() => {
             contains(list, 'c');
+        });
+    });
+});
+
+describe('containsFind', () => {
+    it('true', () => {
+        var list = [{ a: 'b' }, { c: 'd' }];
+        containsFind(list, i => i.a === 'b');
+    });
+
+    it('false', () => {
+        var list = [{ a: 'b' }, { c: 'd' }];
+        mustThrewException(() => {
+            containsFind(list, i => i.a === 'c');
         });
     });
 });

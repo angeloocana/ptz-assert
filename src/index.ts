@@ -19,6 +19,13 @@ function notContains(list: any[], item: any, errorMsg?: string) {
     return notOk(list.indexOf(item) >= 0, errorMsg);
 }
 
+type IFindPredicate = (value: any, index: number, obj: any[]) => boolean;
+
+function containsFind(list: any[], predicate: IFindPredicate, errorMsg?: string) {
+    const index = list.findIndex(predicate);
+    return ok(index >= 0, errorMsg);
+}
+
 function notEmptyString(text, errorMsg?: string) {
     if (!text)
         throw errorMsg ? errorMsg : 'ERROR_NULL_REQUIRED_STRING';
@@ -52,6 +59,7 @@ export {
     notDeepEqual,
     throws,
     contains,
+    containsFind,
     containsNTimes,
     notContains,
     notEmptyString,

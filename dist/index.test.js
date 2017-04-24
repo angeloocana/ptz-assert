@@ -132,6 +132,22 @@ describe('contains', function () {
         });
     });
 });
+describe('containsFind', function () {
+    it('true', function () {
+        var list = [{ a: 'b' }, { c: 'd' }];
+        (0, _index.containsFind)(list, function (i) {
+            return i.a === 'b';
+        });
+    });
+    it('false', function () {
+        var list = [{ a: 'b' }, { c: 'd' }];
+        mustThrewException(function () {
+            (0, _index.containsFind)(list, function (i) {
+                return i.a === 'c';
+            });
+        });
+    });
+});
 describe('containsNTimes', function () {
     var list = ['a', 'b', 'b', 'c', 'c', 'c'];
     it('0', function () {
