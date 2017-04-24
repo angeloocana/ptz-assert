@@ -6,6 +6,7 @@ import {
     emptyArray,
     equal,
     notContains,
+    notContainsFind,
     notDeepEqual,
     notEmptyArray,
     notEmptyString,
@@ -179,6 +180,20 @@ describe('containsFind', () => {
         var list = [{ a: 'b' }, { c: 'd' }];
         mustThrewException(() => {
             containsFind(list, i => i.a === 'c');
+        });
+    });
+});
+
+describe('notContainsFind', () => {
+    it('true', () => {
+        var list = [{ a: 'b' }, { c: 'd' }];
+        notContainsFind(list, i => i.a === 'c');
+    });
+
+    it('false', () => {
+        var list = [{ a: 'b' }, { c: 'd' }];
+        mustThrewException(() => {
+            notContainsFind(list, i => i.a === 'b');
         });
     });
 });

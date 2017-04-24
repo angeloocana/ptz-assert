@@ -26,6 +26,14 @@ function containsFind(list: any[], predicate: IFindPredicate, errorMsg?: string)
     return ok(index >= 0, errorMsg);
 }
 
+function notContainsFind(list: any[], predicate: IFindPredicate, errorMsg?: string) {
+    if (!list)
+        return;
+
+    const index = list.findIndex(predicate);
+    return notOk(index >= 0, errorMsg);
+}
+
 function notEmptyString(text, errorMsg?: string) {
     if (!text)
         throw errorMsg ? errorMsg : 'ERROR_NULL_REQUIRED_STRING';
@@ -62,6 +70,7 @@ export {
     containsFind,
     containsNTimes,
     notContains,
+    notContainsFind,
     notEmptyString,
     notEmptyArray,
     emptyArray

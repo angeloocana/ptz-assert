@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.emptyArray = exports.notEmptyArray = exports.notEmptyString = exports.notContains = exports.containsNTimes = exports.containsFind = exports.contains = exports.throws = exports.notDeepEqual = exports.notEqual = exports.deepEqual = exports.equal = exports.notOk = exports.ok = undefined;
+exports.emptyArray = exports.notEmptyArray = exports.notEmptyString = exports.notContainsFind = exports.notContains = exports.containsNTimes = exports.containsFind = exports.contains = exports.throws = exports.notDeepEqual = exports.notEqual = exports.deepEqual = exports.equal = exports.notOk = exports.ok = undefined;
 
 var _assert = require('assert');
 
@@ -25,6 +25,11 @@ function notContains(list, item, errorMsg) {
 function containsFind(list, predicate, errorMsg) {
     var index = list.findIndex(predicate);
     return (0, _assert.ok)(index >= 0, errorMsg);
+}
+function notContainsFind(list, predicate, errorMsg) {
+    if (!list) return;
+    var index = list.findIndex(predicate);
+    return notOk(index >= 0, errorMsg);
 }
 function notEmptyString(text, errorMsg) {
     if (!text) throw errorMsg ? errorMsg : 'ERROR_NULL_REQUIRED_STRING';
@@ -49,6 +54,7 @@ exports.contains = contains;
 exports.containsFind = containsFind;
 exports.containsNTimes = containsNTimes;
 exports.notContains = notContains;
+exports.notContainsFind = notContainsFind;
 exports.notEmptyString = notEmptyString;
 exports.notEmptyArray = notEmptyArray;
 exports.emptyArray = emptyArray;

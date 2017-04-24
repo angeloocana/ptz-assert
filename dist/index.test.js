@@ -148,6 +148,22 @@ describe('containsFind', function () {
         });
     });
 });
+describe('notContainsFind', function () {
+    it('true', function () {
+        var list = [{ a: 'b' }, { c: 'd' }];
+        (0, _index.notContainsFind)(list, function (i) {
+            return i.a === 'c';
+        });
+    });
+    it('false', function () {
+        var list = [{ a: 'b' }, { c: 'd' }];
+        mustThrewException(function () {
+            (0, _index.notContainsFind)(list, function (i) {
+                return i.a === 'b';
+            });
+        });
+    });
+});
 describe('containsNTimes', function () {
     var list = ['a', 'b', 'b', 'c', 'c', 'c'];
     it('0', function () {
