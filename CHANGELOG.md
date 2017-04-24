@@ -1,6 +1,11 @@
 ## master
 
 
+## 1.6.7 (April 24, 2017)
+
+* Add containsFind.
+* Add notContainsFind.
+
 ## 1.6.6 (April 19, 2017)
 
 * Add custom error message to.
