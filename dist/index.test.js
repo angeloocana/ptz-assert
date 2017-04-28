@@ -149,6 +149,11 @@ describe('containsFind', function () {
     });
 });
 describe('notContainsFind', function () {
+    it('do not throw error when null array', function () {
+        (0, _index.notContainsFind)(null, function (i) {
+            return i.a === 'c';
+        });
+    });
     it('true', function () {
         var list = [{ a: 'b' }, { c: 'd' }];
         (0, _index.notContainsFind)(list, function (i) {

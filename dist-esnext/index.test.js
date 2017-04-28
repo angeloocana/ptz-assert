@@ -146,6 +146,9 @@ describe('containsFind', () => {
     });
 });
 describe('notContainsFind', () => {
+    it('do not throw error when null array', () => {
+        notContainsFind(null, i => i.a === 'c');
+    });
     it('true', () => {
         var list = [{ a: 'b' }, { c: 'd' }];
         notContainsFind(list, i => i.a === 'c');
