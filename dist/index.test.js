@@ -10,7 +10,7 @@ var mustThrewException = function mustThrewException(exec, errorMsg) {
         threw = true;
         if (errorMsg && ex !== errorMsg) throw 'not threw custom error msg: ' + errorMsg;
     } finally {
-        if (!threw) throw 'not threw an exception';
+        if (!threw) throw 'not threw an exception'; // tslint:disable-line:no-unsafe-finally
     }
 };
 describe('ok', function () {
@@ -266,4 +266,5 @@ describe('emptyArray', function () {
         (0, _index.emptyArray)(undefined);
     });
 });
+//# sourceMappingURL=index.test.js.map
 //# sourceMappingURL=index.test.js.map

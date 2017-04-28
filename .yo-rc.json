@@ -3,7 +3,8 @@
     "promptValues": {
       "appname": "ptz-assert",
       "githubAuthor": "polutz",
-      "runNpmInstall": true
+      "runNpmInstall": true,
+      "codecovToken": "e8f9617b-0ab3-409e-afca-406d99c879a4"
     }
   }
 }
