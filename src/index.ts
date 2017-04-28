@@ -40,9 +40,6 @@ function notEmptyString(text, errorMsg?: string) {
 
     if (typeof text !== 'string')
         throw errorMsg ? errorMsg : 'ERROR_NOT_A_STRING';
-
-    if (!(text.length > 0))
-        throw errorMsg ? errorMsg : 'ERROR_NULL_REQUIRED_STRING';
 }
 
 function notEmptyArray(list: any[], errorMsg?: string) {

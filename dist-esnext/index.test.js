@@ -204,6 +204,11 @@ describe('notEmptyString', () => {
             notEmptyString({});
         });
     });
+    it('number', () => {
+        mustThrewException(() => {
+            notEmptyString(123);
+        });
+    });
 });
 describe('notEmptyArray', () => {
     it('not empty', () => {

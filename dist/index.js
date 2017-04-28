@@ -34,7 +34,6 @@ function notContainsFind(list, predicate, errorMsg) {
 function notEmptyString(text, errorMsg) {
     if (!text) throw errorMsg ? errorMsg : 'ERROR_NULL_REQUIRED_STRING';
     if (typeof text !== 'string') throw errorMsg ? errorMsg : 'ERROR_NOT_A_STRING';
-    if (!(text.length > 0)) throw errorMsg ? errorMsg : 'ERROR_NULL_REQUIRED_STRING';
 }
 function notEmptyArray(list, errorMsg) {
     if (!list) throw errorMsg ? errorMsg : 'ERROR_NULL_REQUIRED_ARRAY';

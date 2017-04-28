@@ -211,6 +211,11 @@ describe('notEmptyString', function () {
             (0, _index.notEmptyString)({});
         });
     });
+    it('number', function () {
+        mustThrewException(function () {
+            (0, _index.notEmptyString)(123);
+        });
+    });
 });
 describe('notEmptyArray', function () {
     it('not empty', function () {
