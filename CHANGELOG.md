@@ -1,6 +1,14 @@
 ## master
 
 
+## 1.6.8 (April 28, 2017)
+
+* Transpiling Typescript to esnext.
+* Remove unnecessary if in notEmptyString.
+* Add tests for:
+    - notContainsFind do not throw error when null array.
+    - notEmptyString when not string.
+
 ## 1.6.7 (April 24, 2017)
 
 * Add containsFind.
